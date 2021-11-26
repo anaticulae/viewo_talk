@@ -26,9 +26,6 @@ class Talker:
     def append(self, item: viewo_talk.action.Action):
         self.todo.put(item)
 
-    def register(self, task):
-        self.tasks.append(task)
-
     def messages(self):
         result = []
         while not self.msg.empty():
@@ -49,6 +46,9 @@ class Talker:
             job = self.todo.get_nowait()
             for task in self.tasks:
                 task.todo(job)
+
+    def register(self, task):
+        self.tasks.append(task)
 
 
 def collect(package) -> list:

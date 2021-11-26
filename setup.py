@@ -44,5 +44,6 @@ if __name__ == "__main__":
         ],
         packages=[
             'viewo_talk',
+            'viewo_talk.plan',
         ],
     )

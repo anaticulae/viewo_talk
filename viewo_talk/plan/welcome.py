@@ -1,0 +1,35 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2021 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import utila
+
+import viewo_talk.action
+
+
+TITLE, CONTENT = viewo_talk.action.answer_split("""\
+Willkommen auf checkitweg.de
+
+Bei fragen schauen Sie <<hier>>.
+""")
+
+
+class Welcome(viewo_talk.action.ActionMixin):
+
+    def __init__(self):
+        self.done = utila.Single()
+
+    def todo(self, item: viewo_talk.action.Action):
+        user = item.user
+        if self.done.contains(user):
+            return
+        self.sendtouser(
+            user=user,
+            title=TITLE,
+            content=CONTENT,
+        )

@@ -29,6 +29,12 @@ class Talker:
     def register(self, task):
         self.tasks.append(task)
 
+    def messages(self):
+        result = []
+        while not self.msg.empty():
+            result.append(self.msg.get_nowait())
+        return result
+
     def sendtouser(self, user: str, title: str, content: str):
         msg = viewo_talk.action.Message(
             user=user,

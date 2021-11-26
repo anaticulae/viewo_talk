@@ -26,6 +26,20 @@ def test_welcome():
     assert msg.title == viewo_talk.plan.welcome.TITLE
 
 
+def test_welcome_single():
+    with worker() as talker:
+        for _ in range(5):
+            info = viewo_talk.action.Action(
+                user=tests.USER,
+                view=tests.WELCOME,
+            )
+            talker.append(info)
+    msg = talker.msg.get_nowait()
+    assert msg.title == viewo_talk.plan.welcome.TITLE
+    # only a single message
+    assert not talker.messages()
+
+
 class worker(contextlib.ContextDecorator):  # pylint:disable=C0103
 
     def __init__(self):

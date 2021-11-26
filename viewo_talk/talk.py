@@ -38,15 +38,33 @@ class Talker:
         )
         self.msg.put(msg)
 
+    def run(self):
+        while not self.todo.empty():
+            job = self.todo.get_nowait()
+            for task in self.tasks:
+                task.todo(job)
+
 
 def collect(package) -> list:
     source = os.path.split(package.__file__)[0]
-    for module in utila.file_list(source, include='py'):
-        print(module)
+    result = []
+    for module in utila.file_list(source, include='py', absolute=True):
+        if module.endswith('__init__.py'):
+            continue
+        loaded = utila.load_module(module)
+        for value in vars(loaded).values():
+            if not hasattr(value, 'mro'):
+                continue
+            if viewo_talk.action.ActionMixin not in value.__mro__:
+                continue
+            result.append(value)
+    return result
 
 
 def create() -> Talker:
-    result = Talker()
-    for item in collect(viewo_talk.plan):
-        result.register(item)
-    return result
+    talker = Talker()
+    for ctor in collect(viewo_talk.plan):
+        constructred = ctor()
+        constructred.register(talker.sendtouser)
+        talker.register(constructred)
+    return talker

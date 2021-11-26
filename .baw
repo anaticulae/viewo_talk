@@ -1,0 +1,6 @@
+[project]
+short = viewo_talk
+name = talk2me
+
+[release]
+fail_on_finding = True

@@ -26,7 +26,7 @@ class Talker:
     def append(self, item: viewo_talk.action.Action):
         self.todo.put(item)
 
-    def messages(self):
+    def answers_pop(self):
         result = []
         while not self.msg.empty():
             result.append(self.msg.get_nowait())

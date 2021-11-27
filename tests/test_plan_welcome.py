@@ -37,7 +37,7 @@ def test_welcome_single():
     msg = talker.msg.get_nowait()
     assert msg.title == viewo_talk.plan.welcome.TITLE
     # only a single message
-    assert not talker.messages()
+    assert not talker.answers_pop()
 
 
 class worker(contextlib.ContextDecorator):  # pylint:disable=C0103

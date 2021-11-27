@@ -8,8 +8,10 @@
 # =============================================================================
 
 import flask
+import viewo_api
 
 import viewo_talk
+import viewo_talk.action
 import viewo_talk.config
 import viewo_talk.talk
 from viewo_talk.api.present import *  # pylint:disable=W0401,W0614
@@ -23,9 +25,15 @@ class Application(flask.Flask):
         self.register()
         self.before_first_request(self.talker.start)
         self.teardown_appcontext(self.teardown)
+        self.before_request(self.talker_push)
 
     def teardown(self, exception):  # pylint:disable=W0613
         self.talker.stop()
+
+    def talker_push(self):
+        request = viewo_api.request()
+        action = viewo_talk.action.fromrequest(request)
+        self.talker.append(action)
 
     def register(self):
         # data API

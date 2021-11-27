@@ -29,36 +29,6 @@
 
 <div id="mbox" class="hidden">
     <button id="mbox_close" class="btn btn-sm btn-primary">X</button>
-    <h3 id="mbox_headline">Headline</h3>
-    <p id="mbox_content"></p>
+    <h3 id="mbox_headline">...</h3>
+    <p id="mbox_content">...</p>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(`#mbox_close`).click(function () {
-            mbox_hide()
-        });
-        listen()
-    })
-
-    const listen = function () {
-        rpc(`/talktome`, function (response) {
-            let messages = response.messages
-            let message = null
-            for (message of messages) {
-                mbox_show(message.title, message.content)
-            }
-            setTimeout(() => listen, 3000);
-        })
-    }
-
-    const mbox_hide = function () {
-        $('#mbox').addClass('hidden')
-    }
-
-    const mbox_show = function (headline, content) {
-        $('#mbox_headline').text(headline)
-        $('#mbox_content').text(content)
-        $('#mbox').removeClass('hidden')
-    }
-</script>

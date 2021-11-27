@@ -9,12 +9,12 @@
 {% block content %}
 {% endblock %}
 
-{% block navbar %}
-
 {% block scripts %}
 {{ super() }}
 <script type="text/javascript" src="{{url_for('static', filename='basic.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='mbox.js')}}"></script>
 {% endblock %}
 
+{% block navbar %}
 {% include "mbox.html" %}
 {% endblock %}

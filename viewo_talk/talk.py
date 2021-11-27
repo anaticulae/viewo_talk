@@ -9,6 +9,7 @@
 
 import os
 import queue
+import threading
 
 import utila
 
@@ -19,9 +20,10 @@ import viewo_talk.plan
 class Talker:
 
     def __init__(self):
+        self.tasks = []
+        self.running = False
         self.todo = queue.Queue()
         self.msg = queue.Queue()
-        self.tasks = []
 
     def append(self, item: viewo_talk.action.Action):
         self.todo.put(item)
@@ -32,6 +34,32 @@ class Talker:
             result.append(self.msg.get_nowait())
         return result
 
+    def consume(self, wait: bool = True):
+        # use wait:false for unit testing
+        while not self.todo.empty():
+            if wait:
+                job = self.todo.get()
+            else:
+                job = self.todo.get_nowait()
+            if job is None:
+                break
+            for task in self.tasks:
+                task.todo(job)
+
+    def run(self):
+        while self.running:
+            self.consume()
+
+    def start(self):
+        # TODO: HOW TO TEAR DOWN THIS THREAD? IS IT GONE AFTER SETTING
+        # RUNNING=FALSE
+        threading.Thread(target=self.run).start()
+
+    def stop(self):
+        self.running = False
+        # ensure that waiting ends
+        self.todo.put(None)
+
     def sendtouser(self, user: str, title: str, content: str):
         msg = viewo_talk.action.Message(
             user=user,
@@ -40,12 +68,6 @@ class Talker:
             content=content,
         )
         self.msg.put(msg)
-
-    def run(self):
-        while not self.todo.empty():
-            job = self.todo.get_nowait()
-            for task in self.tasks:
-                task.todo(job)
 
     def register(self, task):
         self.tasks.append(task)

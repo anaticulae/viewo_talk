@@ -49,5 +49,5 @@ class worker(contextlib.ContextDecorator):  # pylint:disable=C0103
         return self.created
 
     def __exit__(self, *exc):
-        self.created.run()
+        self.created.consume(wait=False)
         return self.created.msg

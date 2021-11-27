@@ -53,6 +53,7 @@ class Talker:
     def start(self):
         # TODO: HOW TO TEAR DOWN THIS THREAD? IS IT GONE AFTER SETTING
         # RUNNING=FALSE
+        self.running = True
         threading.Thread(target=self.run).start()
 
     def stop(self):

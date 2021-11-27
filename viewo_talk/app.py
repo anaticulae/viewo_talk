@@ -11,15 +11,26 @@ import flask
 
 import viewo_talk
 import viewo_talk.config
+import viewo_talk.talk
 from viewo_talk.api.present import *  # pylint:disable=W0401,W0614
 
 
+class Application(flask.Flask):
+
+    def __init__(self):
+        super().__init__(__name__)
+        self.talker = viewo_talk.talk.create()
+        self.register()
+        self.before_first_request(self.talker.start)
+
+    def register(self):
+        # data API
+        self.register_blueprint(
+            viewo_talk.api.api_talk,
+            url_prefix=viewo_talk.config.API_PREFIX,
+        )
+
+
 def create_app() -> flask.Flask:
-    # Flask determines template- and static-folder automatically.
-    result = flask.Flask(__name__)
-    # data API
-    result.register_blueprint(
-        viewo_talk.api.api_talk,
-        url_prefix=viewo_talk.config.API_PREFIX,
-    )
-    return result
+    appx = Application()
+    return appx

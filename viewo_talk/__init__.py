@@ -10,6 +10,7 @@
 import os
 
 from viewo_talk.api import api_talk
+from viewo_talk.app import register_talkme
 
 __version__ = '0.0.0'
 

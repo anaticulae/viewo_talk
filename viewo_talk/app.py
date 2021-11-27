@@ -23,33 +23,37 @@ class Application(flask.Flask):
 
     def __init__(self):
         super().__init__(__name__)
-        self.talker = viewo_talk.talk.create()
+        register_talkme(self)
         self.register()
         self.create_view()
-        self.before_first_request(self.talker.start)
-        self.teardown_appcontext(self.teardown)
-        self.before_request(self.talker_push)
-
-    def teardown(self, exception):  # pylint:disable=W0613
-        self.talker.stop()
-
-    def talker_push(self):
-        request = viewo_api.request()
-        action = viewo_talk.action.fromrequest(request)
-        self.talker.append(action)
 
     def register(self):
-        # data API
-        self.register_blueprint(
-            viewo_talk.api.api_talk,
-            url_prefix=viewo_talk.config.API_PREFIX,
-        )
         self.register_blueprint(welcome)
 
     def create_view(self):
         self.config.setdefault('BOOTSTRAP_SERVE_LOCAL', True)
         # configure extensions
         flask_bootstrap.Bootstrap(app=self)
+
+
+def register_talkme(app, prefix: str = None):
+    talker = viewo_talk.talk.create()
+    app.talker = talker
+    app.before_first_request(talker.start)
+
+    @app.teardown_appcontext
+    def teardown(exception):  # pylint:disable=W0613
+        talker.stop()
+
+    @app.before_request
+    def talker_push():
+        request = viewo_api.request()
+        action = viewo_talk.action.fromrequest(request)
+        talker.append(action)
+
+    url_prefix = prefix if prefix else viewo_talk.config.API_PREFIX
+    # data API
+    app.register_blueprint(viewo_talk.api.api_talk, url_prefix=url_prefix)
 
 
 def create_app() -> flask.Flask:

@@ -12,11 +12,4 @@ import viewo_talk.api
 
 @viewo_talk.api.api_talk.route('/talktome', methods=['GET'])
 def receive_message() -> str:
-    # result = viewo_api.success(
-    #     userid=userid,
-    #     password=password,
-    #     documentid=documentid,
-    #     **optional,
-    # )
-    # return result
-    pass
+    return 'hallo', 200

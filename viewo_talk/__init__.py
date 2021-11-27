@@ -9,6 +9,8 @@
 
 import os
 
+from viewo_talk.api import api_talk
+
 __version__ = '0.0.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

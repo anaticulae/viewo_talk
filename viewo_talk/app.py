@@ -22,6 +22,10 @@ class Application(flask.Flask):
         self.talker = viewo_talk.talk.create()
         self.register()
         self.before_first_request(self.talker.start)
+        self.teardown_appcontext(self.teardown)
+
+    def teardown(self, exception):  # pylint:disable=W0613
+        self.talker.stop()
 
     def register(self):
         # data API

@@ -22,8 +22,8 @@ def test_welcome():
             view=tests.WELCOME,
         )
         talker.append(info)
-    msg = talker.msg.get_nowait()
-    assert msg.title == viewo_talk.plan.welcome.TITLE
+    msg = talker.answers_pop(tests.USER)
+    assert msg[0].title == viewo_talk.plan.welcome.TITLE
 
 
 def test_welcome_single():
@@ -34,10 +34,10 @@ def test_welcome_single():
                 view=tests.WELCOME,
             )
             talker.append(info)
-    msg = talker.msg.get_nowait()
-    assert msg.title == viewo_talk.plan.welcome.TITLE
+    msg = talker.answers_pop(tests.USER)
+    assert msg[0].title == viewo_talk.plan.welcome.TITLE
     # only a single message
-    assert not talker.answers_pop()
+    assert not talker.answers_pop(tests.USER)
 
 
 class worker(contextlib.ContextDecorator):  # pylint:disable=C0103

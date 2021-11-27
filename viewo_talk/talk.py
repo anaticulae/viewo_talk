@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
 import os
 import queue
 import threading
@@ -23,16 +24,17 @@ class Talker:
         self.tasks = []
         self.running = False
         self.todo = queue.Queue()
-        self.msg = queue.Queue()
+        self.msg = collections.defaultdict(list)
 
     def append(self, item: viewo_talk.action.Action):
         self.todo.put(item)
 
-    def answers_pop(self):
-        result = []
-        while not self.msg.empty():
-            result.append(self.msg.get_nowait())
-        return result
+    def answers_pop(self, user: int = None) -> list:
+        if self.msg[user]:
+            result = list(self.msg[user])
+            self.msg[user].clear()
+            return result
+        return []
 
     def consume(self, wait: bool = True):
         # use wait:false for unit testing
@@ -68,7 +70,7 @@ class Talker:
             title=title,
             content=content,
         )
-        self.msg.put(msg)
+        self.msg[user].append(msg)
 
     def register(self, task):
         self.tasks.append(task)

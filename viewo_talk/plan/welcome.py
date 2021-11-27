@@ -15,7 +15,7 @@ import viewo_talk.action
 TITLE, CONTENT = viewo_talk.action.answer_split("""\
 Willkommen auf checkitweg.de
 
-Bei fragen schauen Sie <<hier>>.
+Bei Fragen schauen Sie <<hier>>.
 """)
 
 

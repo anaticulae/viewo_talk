@@ -12,4 +12,4 @@ import utilatest
 
 def test_receive_message(client):
     response = utilatest.apicall(client, '/talktome')
-    assert response == 'hallo'
+    assert response == {'messages': []}

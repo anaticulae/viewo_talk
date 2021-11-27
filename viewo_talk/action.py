@@ -52,6 +52,11 @@ def fromrequest(request) -> Action:
     return action
 
 
+def message_raw(msg: Message) -> dict:
+    result = dict(title=msg.title, content=msg.content)
+    return result
+
+
 API_LISTEN = '/api/v0/talktome'
 
 

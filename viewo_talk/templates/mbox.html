@@ -1,0 +1,54 @@
+<style>
+    #mbox {
+        bottom: 50px;
+        left: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        position: fixed;
+        border: 2px solid black;
+        padding: 30px;
+        width: 350px;
+        min-height: 200px;
+        background-color: chocolate;
+        z-index: 1030;
+    }
+
+    #mbox_close {
+        position: relative;
+        top: -30px;
+        right: -30px;
+        float: right;
+        border-radius: 0px;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+
+</style>
+
+<div id="mbox" class="hidden">
+    <button id="mbox_close" class="btn btn-sm btn-primary">X</button>
+    <h3 id="mbox_headline">Headline</h3>
+    <p id="mbox_content"></p>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(`#mbox_close`).click(function () {
+            mbox_hide()
+        });
+        mbox_show('Helm', 'Content')
+    })
+
+    const mbox_hide = function () {
+        $('#mbox').addClass('hidden')
+    }
+
+    const mbox_show = function (headline, content) {
+        $('#mbox_headline').text(headline)
+        $('#mbox_content').text(content)
+        $('#mbox').removeClass('hidden')
+    }
+
+</script>

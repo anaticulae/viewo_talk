@@ -8,6 +8,7 @@
 # =============================================================================
 
 import flask
+import flask_bootstrap
 import viewo_api
 
 import viewo_talk
@@ -15,6 +16,7 @@ import viewo_talk.action
 import viewo_talk.config
 import viewo_talk.talk
 from viewo_talk.api.present import *  # pylint:disable=W0401,W0614
+from viewo_talk.view import welcome
 
 
 class Application(flask.Flask):
@@ -23,6 +25,7 @@ class Application(flask.Flask):
         super().__init__(__name__)
         self.talker = viewo_talk.talk.create()
         self.register()
+        self.create_view()
         self.before_first_request(self.talker.start)
         self.teardown_appcontext(self.teardown)
         self.before_request(self.talker_push)
@@ -41,6 +44,12 @@ class Application(flask.Flask):
             viewo_talk.api.api_talk,
             url_prefix=viewo_talk.config.API_PREFIX,
         )
+        self.register_blueprint(welcome)
+
+    def create_view(self):
+        self.config.setdefault('BOOTSTRAP_SERVE_LOCAL', True)
+        # configure extensions
+        flask_bootstrap.Bootstrap(app=self)
 
 
 def create_app() -> flask.Flask:

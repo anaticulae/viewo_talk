@@ -38,6 +38,7 @@ class ActionMixin:
 
 
 def answer_split(raw: str):
+    raw = raw.strip()
     return raw.split('\n\n', maxsplit=1)
 
 

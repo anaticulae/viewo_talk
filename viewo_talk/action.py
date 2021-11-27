@@ -39,3 +39,23 @@ class ActionMixin:
 
 def answer_split(raw: str):
     return raw.split('\n\n', maxsplit=1)
+
+
+def fromrequest(request) -> Action:
+    action = Action(
+        user=request.hashed,
+        time=request.time,
+        view=request.path,
+        data=request.data,
+        msgid=msgid(request),
+    )
+    return action
+
+
+API_LISTEN = '/api/v0/talktome'
+
+
+def msgid(request) -> str:
+    if request.path == API_LISTEN:
+        return 'LISTEN'
+    return None

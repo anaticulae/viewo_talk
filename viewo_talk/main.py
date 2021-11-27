@@ -9,7 +9,6 @@
 
 import utila
 
-import viewo_talk.plan
 import viewo_talk.talk
 
 

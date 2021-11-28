@@ -7,8 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import flask
 
-api_talk = flask.Blueprint('api_talk', __name__)  # pylint:disable=C0103
+import viewo_talk
+
+api_talk = flask.Blueprint(
+    name='api_talk',
+    import_name=__name__,
+    static_folder=os.path.join(viewo_talk.ROOT, 'viewo_talk/static'),
+    template_folder=os.path.join(viewo_talk.ROOT, 'viewo_talk/templates'),
+)
 
 __all__ = ['api_talk', 'present']

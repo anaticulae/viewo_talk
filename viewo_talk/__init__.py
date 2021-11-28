@@ -9,9 +9,10 @@
 
 import os
 
-from viewo_talk.api import api_talk
-from viewo_talk.app import register_talkme
-
 __version__ = '0.0.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# pylint:disable=C0413
+from viewo_talk.api import api_talk  # isort:skip
+from viewo_talk.app import register_talkme  # isort:skip

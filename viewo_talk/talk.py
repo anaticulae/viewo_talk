@@ -38,15 +38,14 @@ class Talker:
 
     def consume(self, wait: bool = True):
         # use wait:false for unit testing
-        while not self.todo.empty():
-            if wait:
-                job = self.todo.get()
-            else:
-                job = self.todo.get_nowait()
-            if job is None:
-                break
-            for task in self.tasks:
-                task.todo(job)
+        if wait:
+            job = self.todo.get()
+        else:
+            job = self.todo.get_nowait()
+        if job is None:
+            return
+        for task in self.tasks:
+            task.todo(job)
 
     def run(self):
         while self.running:

@@ -9,4 +9,5 @@
 
 import viewo_talk.app
 
-app = viewo_talk.app.create_app()  # pylint:disable=C0103
+if __name__ == "__main__":
+    app = viewo_talk.app.create_app()  # pylint:disable=C0103

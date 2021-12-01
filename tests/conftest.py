@@ -11,6 +11,7 @@ import pytest
 import utilatest
 
 import tests.plan.delete_all
+import viewo_talk.action
 import viewo_talk.config
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
@@ -39,4 +40,21 @@ def client_withdelete(client):  # pylint:disable=W0621
     deleteall = tests.plan.delete_all.DeleteAll()
     deleteall.register(client.application.talker.sendtouser)
     client.application.talker.register(deleteall)
+
+    def delete_message() -> str:
+        return 'done', 200
+
+    client.application.add_url_rule(
+        viewo_talk.action.pth('/talktome'),
+        'delete_message',
+        delete_message,
+        methods=['POST'],
+    )
+    urlmap = client.application.url_map
+    # TODO: CONVERT TO EASIER TO USE METHOD
+    # TODO: MAY CHANGE LATER
+    deleted = list(urlmap.iter_rules())[1]
+    assert str(deleted) == viewo_talk.action.pth('/talktome')
+    assert 'POST' in deleted.methods
+    deleteall.routes.append(('POST', deleted.rule))
     yield client

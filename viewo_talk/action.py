@@ -9,6 +9,8 @@
 
 import dataclasses
 
+import viewo_talk.config
+
 
 @dataclasses.dataclass
 class Action:
@@ -70,15 +72,19 @@ def fromrequest(request) -> Action:
         time=request.time,
         view=request.path,
         data=request.data,
-        msgid=msgid(request),
+        msgid=msgid(request.path),
     )
     return action
 
 
-API_LISTEN = '/api/v0/talktome'
+def pth(path: str):
+    return f'{viewo_talk.config.API_PREFIX}{path}'
 
 
-def msgid(request) -> str:
-    if request.path == API_LISTEN:
+API_LISTEN = pth('/talktome')
+
+
+def msgid(path) -> str:
+    if path == API_LISTEN:
         return 'LISTEN'
     return None

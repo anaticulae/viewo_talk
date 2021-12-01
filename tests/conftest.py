@@ -10,6 +10,7 @@
 import pytest
 import utilatest
 
+import tests.plan.delete_all
 import viewo_talk.config
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
@@ -31,3 +32,11 @@ def app():
 def client(app):  # pylint:disable=W0621
     """A test client for the app."""
     return app.test_client()
+
+
+@pytest.fixture
+def client_withdelete(client):  # pylint:disable=W0621
+    deleteall = tests.plan.delete_all.DeleteAll()
+    deleteall.register(client.application.talker.sendtouser)
+    client.application.talker.register(deleteall)
+    yield client

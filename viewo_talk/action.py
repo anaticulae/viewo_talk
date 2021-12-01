@@ -61,7 +61,7 @@ class ActionMixin:
         pass
 
     def register(self, talker):
-        self.sendtouser = talker.sendtouser
+        self.send_msg = talker.send_msg
 
 
 def answer_split(raw: str):

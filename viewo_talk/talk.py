@@ -70,7 +70,7 @@ class Talker:
         # ensure that waiting ends
         self.todo.put(None)
 
-    def sendtouser(self, user: str, title: str, **kwargs):
+    def send_msg(self, user: str, title: str, **kwargs):
         isquestion = 'question' in kwargs
         ctor = viewo_talk.action.Message
         if isquestion:

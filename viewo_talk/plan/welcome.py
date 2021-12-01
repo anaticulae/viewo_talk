@@ -29,7 +29,7 @@ class Welcome(viewo_talk.action.ActionMixin):
         user = item.user
         if self.done.contains(user):
             return
-        self.sendtouser(
+        self.send_msg(
             user=user,
             title=TITLE,
             content=CONTENT,

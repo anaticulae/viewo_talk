@@ -22,6 +22,12 @@ class Action:
 
 
 @dataclasses.dataclass
+class Answer(Action):
+    question: int = None
+    answer: bool = False
+
+
+@dataclasses.dataclass
 class Message:
     user: int = None
     time: int = None

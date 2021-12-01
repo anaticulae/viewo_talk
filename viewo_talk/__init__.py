@@ -16,6 +16,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 # pylint:disable=C0413
 from viewo_talk.api import api_talk  # isort:skip
 from viewo_talk.app import register_talkme  # isort:skip
+from viewo_talk.action import ActionMixin  # isort:skip
 from viewo_talk.action import Message  # isort:skip
 from viewo_talk.action import Question  # isort:skip
-from viewo_talk.action import ActionMixin  # isort:skip
+from viewo_talk.action import pth  # isort:skip

@@ -27,7 +27,7 @@ class DeleteAll(viewo_talk.action.ActionMixin):
     def __init__(self):
         super().__init__()
         self.deleted = collections.Counter()
-        self.routes.append(('GET', '/api/v0/talktome/answer/'))
+        self.routes = [('POST', viewo_talk.action.pth('/talktome'))]
 
     def run(self, item: viewo_talk.action.Action):
         self.deleted[item.user] += 1

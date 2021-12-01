@@ -30,9 +30,14 @@ def test_receive_welcome(client):
 
 
 def test_receive_answer(client):
-    utilatest.apicall(client, '/talktome/answer/13371337/0')
-    utilatest.apicall(
+    utilatest.apipost(
         client,
-        '/talktome/answer/AAAAA/0',
+        '/talktome',
+        data=dict(question=13371337, answer=0),
+    )
+    utilatest.apipost(
+        client,
+        '/talktome',
+        data=dict(question='AAAAAAAAA', answer=0),
         expected=http.HTTPStatus.BAD_REQUEST,
     )

@@ -15,14 +15,15 @@ import tests
 def test_question(client_withdelete):
     # delete some content
     for _ in range(10):
-        utilatest.apipost(client_withdelete, '/talktome', data={})
+        utilatest.apipost(client_withdelete, '/talktome/delete', data={})
     # wait to process items
     tests.wait(client_withdelete)
     response = utilatest.apicall(client_withdelete, '/talktome')
     assert str(response).count("'name': 'QUESTION'") == 1
-    response = utilatest.apicall(
+    response = utilatest.apipost(
         client_withdelete,
-        '/talktome/answer/13371337/0',
+        '/talktome',
+        dict(question=13371337, answer=0),
     )
     # wait to process items
     tests.wait(client_withdelete)

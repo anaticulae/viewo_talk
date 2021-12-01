@@ -25,14 +25,13 @@ def receive_message() -> str:
     return result
 
 
-@viewo_talk.api.api_talk.route(
-    '/talktome/answer/<string:question>/<string(length=1):answer>')
-def receive_answer(question, answer) -> str:
+@viewo_talk.api.api_talk.route('/talktome', methods=['POST'])
+def receive_answer() -> str:
     try:
-        question = int(question)
-    except ValueError:
-        return viewo_api.bad(f'invalid index: {question}')
-    answer = bool(answer)
+        question = int(flask.request.form.get('question', None))
+    except (TypeError, ValueError):
+        return viewo_api.bad('invalid question')
+    answer = bool(flask.request.form.get('answer', None))
     todo = create_answer(question, answer)
     flask.current_app.talker.append(todo)
     return 'done', 200

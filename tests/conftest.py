@@ -45,7 +45,7 @@ def client_withdelete(client):  # pylint:disable=W0621
         return 'done', 200
 
     client.application.add_url_rule(
-        viewo_talk.action.pth('/talktome'),
+        viewo_talk.action.pth('/talktome/delete'),
         'delete_message',
         delete_message,
         methods=['POST'],
@@ -53,8 +53,8 @@ def client_withdelete(client):  # pylint:disable=W0621
     urlmap = client.application.url_map
     # TODO: CONVERT TO EASIER TO USE METHOD
     # TODO: MAY CHANGE LATER
-    deleted = list(urlmap.iter_rules())[1]
-    assert str(deleted) == viewo_talk.action.pth('/talktome')
+    deleted = list(urlmap.iter_rules())[0]
+    assert str(deleted) == viewo_talk.action.pth('/talktome/delete')
     assert 'POST' in deleted.methods
     deleteall.routes.append(('POST', deleted.rule))
     yield client

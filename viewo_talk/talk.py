@@ -112,6 +112,6 @@ def create(sources=None) -> Talker:
         sources = [viewo_talk.plan]
     for ctor in collect(sources):
         constructred = ctor()
-        constructred.register(talker.sendtouser)
+        constructred.register(talker)
         talker.register(constructred)
     return talker

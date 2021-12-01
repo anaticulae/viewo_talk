@@ -38,7 +38,7 @@ def client(app):  # pylint:disable=W0621
 @pytest.fixture
 def client_withdelete(client):  # pylint:disable=W0621
     deleteall = tests.plan.delete_all.DeleteAll()
-    deleteall.register(client.application.talker.sendtouser)
+    deleteall.register(client.application.talker)
     client.application.talker.register(deleteall)
 
     def delete_message() -> str:

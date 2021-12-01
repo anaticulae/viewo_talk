@@ -60,8 +60,8 @@ class ActionMixin:
     def run(self, item):
         pass
 
-    def register(self, sendtouser):
-        self.sendtouser = sendtouser
+    def register(self, talker):
+        self.sendtouser = talker.sendtouser
 
 
 def answer_split(raw: str):

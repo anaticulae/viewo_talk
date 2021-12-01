@@ -36,8 +36,8 @@ class Application(flask.Flask):
         flask_bootstrap.Bootstrap(app=self)
 
 
-def register_talkme(app, prefix: str = None):
-    talker = viewo_talk.talk.create()
+def register_talkme(app, prefix: str = None, sources: list = None):
+    talker = viewo_talk.talk.create(sources=sources)
     app.talker = talker
     app.before_first_request(talker.start)
 

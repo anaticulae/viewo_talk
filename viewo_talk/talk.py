@@ -75,25 +75,30 @@ class Talker:
         self.tasks.append(task)
 
 
-def collect(package) -> list:
-    source = os.path.split(package.__file__)[0]
+def collect(packages) -> list:
+    if not utila.iterable(packages):
+        packages = [packages]
     result = []
-    for module in utila.file_list(source, include='py', absolute=True):
-        if module.endswith('__init__.py'):
-            continue
-        loaded = utila.load_module(module)
-        for value in vars(loaded).values():
-            if not hasattr(value, 'mro'):
+    for package in packages:
+        source = os.path.split(package.__file__)[0]
+        for module in utila.file_list(source, include='py', absolute=True):
+            if module.endswith('__init__.py'):
                 continue
-            if viewo_talk.action.ActionMixin not in value.__mro__:
-                continue
-            result.append(value)
+            loaded = utila.load_module(module)
+            for value in vars(loaded).values():
+                if not hasattr(value, 'mro'):
+                    continue
+                if viewo_talk.action.ActionMixin not in value.__mro__:
+                    continue
+                result.append(value)
     return result
 
 
-def create() -> Talker:
+def create(sources=None) -> Talker:
     talker = Talker()
-    for ctor in collect(viewo_talk.plan):
+    if not sources:
+        sources = [viewo_talk.plan]
+    for ctor in collect(sources):
         constructred = ctor()
         constructred.register(talker.sendtouser)
         talker.register(constructred)

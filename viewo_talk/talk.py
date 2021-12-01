@@ -50,7 +50,7 @@ class Talker:
             # empty job to signal to end processing
             return False
         for task in self.tasks:
-            if task.routes and job.path not in task.routes:
+            if not route_matches(job.path, task.routes):
                 continue
             task.run(job)
         return True
@@ -90,6 +90,19 @@ class Talker:
 
     def register(self, task):
         self.tasks.append(task)
+
+
+def route_matches(path, routes) -> bool:
+    if not routes:
+        return True
+    mymethod, mypath = path
+    for method, url in routes:
+        if method != mymethod:
+            continue
+        if mypath.startswith(url):
+            # TODO: IMPROVE THIS
+            return True
+    return False
 
 
 def collect(packages) -> list:

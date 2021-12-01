@@ -20,3 +20,11 @@ def test_question(client_withdelete):
     tests.wait(client_withdelete)
     response = utilatest.apicall(client_withdelete, '/talktome')
     assert str(response).count("'name': 'QUESTION'") == 1
+    response = utilatest.apicall(
+        client_withdelete,
+        '/talktome/answer/13371337/0',
+    )
+    # wait to process items
+    tests.wait(client_withdelete)
+    response = utilatest.apicall(client_withdelete, '/talktome')
+    assert str(response).count("'title': 'Alles Klar'") == 1

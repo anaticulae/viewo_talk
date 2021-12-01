@@ -52,6 +52,13 @@ class Talker:
         for task in self.tasks:
             if not route_matches(job.path, task.routes):
                 continue
+            if isinstance(job, viewo_talk.action.Answer):
+                if hasattr(task, 'yes') and job.answer:
+                    task.yes(job)
+                    continue
+                if hasattr(task, 'no') and not job.answer:
+                    task.no(job)
+                    continue
             task.run(job)
         return True
 
@@ -70,7 +77,7 @@ class Talker:
         # ensure that waiting ends
         self.todo.put(None)
 
-    def send_msg(self, user: str, title: str, content: str):
+    def send_msg(self, user: str, title: str, content: str = None):
         msg = viewo_talk.action.Message(
             user=user,
             time=utila.now(),

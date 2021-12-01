@@ -32,9 +32,8 @@ class DeleteAll(viewo_talk.action.ActionMixin):
         self.deleted[item.user] += 1
         if self.deleted[item.user] != DeleteAll.INVOCATION_MAX:
             return
-        self.send_msg(
+        self.send_question(
             user=item.user,
             title=TITLE,
             content=CONTENT,
-            question=True,
         )

@@ -36,18 +36,24 @@ class Talker:
             return result
         return []
 
-    def consume(self, wait: bool = True):
+    def consume(self, wait: bool = True) -> bool:
         # use wait:false for unit testing
         if wait:
             job = self.todo.get()
         else:
-            job = self.todo.get_nowait()
+            try:
+                job = self.todo.get_nowait()
+            except queue.Empty:
+                # nothing todo
+                return False
         if job is None:
-            return
+            # empty job to signal to end processing
+            return False
         for task in self.tasks:
             if task.routes and job.view in task.routes:
                 continue
             task.run(job)
+        return True
 
     def run(self):
         while self.running:

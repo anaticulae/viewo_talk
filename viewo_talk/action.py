@@ -75,7 +75,7 @@ def fromrequest(request) -> Action:
         time=request.time,
         path=(request.method, request.path),
         data=request.data,
-        msgid=msgid(request.path),
+        msgid=msgid(path=request.path, method=request.method),
     )
     return action
 
@@ -87,7 +87,9 @@ def pth(path: str):
 API_LISTEN = pth('/talktome')
 
 
-def msgid(path) -> str:
+def msgid(path, method='GET') -> str:
+    if method == 'POST':
+        return 'POST'
     if path == API_LISTEN:
         return 'LISTEN'
     return None

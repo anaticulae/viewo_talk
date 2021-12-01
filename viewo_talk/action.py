@@ -55,7 +55,7 @@ class Question(Message):
 class ActionMixin:
 
     def __init__(self, routes: list = None):
-        self.routes = routes
+        self.routes = routes if routes else []
 
     def run(self, item):
         pass

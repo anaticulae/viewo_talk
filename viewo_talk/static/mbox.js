@@ -31,8 +31,11 @@ const mbox_show_question = function (headline, question, index) {
     $('#mbox_question').removeClass('hidden')
     $('#mbox_headline').text(headline)
     $('#mbox_question').text(question)
+    QUESTION = index
     $('#mbox').removeClass('hidden')
 }
+
+let QUESTION = null
 
 const mobx_hide_question = function () {
     $('#mbox').addClass('hidden')
@@ -44,12 +47,7 @@ const register = function () {
     });
     $("#mbox_question_yes").submit(function (event) {
         event.preventDefault();
-        let number = 10
-        rpc_post('/talktome',
-            {
-                'index': number,
-                'action': 'yes',
-            },
+        rpc(`/talktome/` + $QUESTION + `?answer=1`,
             function (response) {
                 mbox_hide()
             },
@@ -57,12 +55,7 @@ const register = function () {
     });
     $("#mbox_question_no").submit(function (event) {
         event.preventDefault();
-        let number = 10
-        rpc_post('/talktome',
-            {
-                'index': number,
-                'action': 'no',
-            },
+        rpc(`/talktome/` + $QUESTION + `?answer=0`,
             function (response) {
                 mbox_hide()
             },

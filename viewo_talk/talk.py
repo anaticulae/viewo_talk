@@ -70,12 +70,16 @@ class Talker:
         # ensure that waiting ends
         self.todo.put(None)
 
-    def sendtouser(self, user: str, title: str, content: str):
-        msg = viewo_talk.action.Message(
+    def sendtouser(self, user: str, title: str, **kwargs):
+        isquestion = 'question' in kwargs
+        ctor = viewo_talk.action.Message
+        if isquestion:
+            ctor = viewo_talk.action.Question
+        msg = ctor(
             user=user,
             time=utila.now(),
             title=title,
-            content=content,
+            content=kwargs.get('content', None),
         )
         self.msg[user].append(msg)
 

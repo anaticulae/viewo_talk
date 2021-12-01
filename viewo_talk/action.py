@@ -36,6 +36,14 @@ class Message:
         return result
 
 
+@dataclasses.dataclass
+class Question(Message):
+    """\
+    >>> Question(title='Magst du Brot?').json()
+    {'name': 'QUESTION', 'title': 'Magst du Brot?', 'content': None}
+    """
+
+
 class ActionMixin:
 
     def todo(self, item):

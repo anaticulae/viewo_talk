@@ -11,6 +11,7 @@ import collections
 
 import viewo_talk.action
 
+
 TITLE, CONTENT = viewo_talk.action.answer_split("""\
 Sämtliche ??? ignorieren
 
@@ -21,9 +22,19 @@ Sie haben 5x ??Finding?? ??XX?? ignoriert. Möchten Sie die restlichen
 
 class DeleteAll(viewo_talk.action.ActionMixin):
 
+    INVOCATION_MAX = 5
+
     def __init__(self):
         super().__init__()
-        self.deleted = collections.defaultdict(default_factory=list)
+        self.deleted = collections.Counter()
 
     def run(self, item: viewo_talk.action.Action):
-        print(item)
+        self.deleted[item.user] += 1
+        if self.deleted[item.user] != DeleteAll.INVOCATION_MAX:
+            return
+        self.sendtouser(
+            user=item.user,
+            title=TITLE,
+            content=CONTENT,
+            question=True,
+        )

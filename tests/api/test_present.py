@@ -33,6 +33,6 @@ def test_receive_answer(client):
     utilatest.apicall(client, '/talktome/answer/13371337/0')
     utilatest.apicall(
         client,
-        '/talktome/answer/13371337/ABC',
-        expected=http.HTTPStatus.NOT_FOUND,
+        '/talktome/answer/AAAAA/0',
+        expected=http.HTTPStatus.BAD_REQUEST,
     )

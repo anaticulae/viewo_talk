@@ -27,6 +27,14 @@ class Message:
     title: str = None
     content: str = None
 
+    def json(self) -> dict:
+        result = dict(
+            name=self.__class__.__name__.upper(),
+            title=self.title,
+            content=self.content,
+        )
+        return result
+
 
 class ActionMixin:
 
@@ -51,11 +59,6 @@ def fromrequest(request) -> Action:
         msgid=msgid(request),
     )
     return action
-
-
-def message_raw(msg: Message) -> dict:
-    result = dict(title=msg.title, content=msg.content)
-    return result
 
 
 API_LISTEN = '/api/v0/talktome'

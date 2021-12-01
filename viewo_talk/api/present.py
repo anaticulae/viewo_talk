@@ -19,8 +19,7 @@ def receive_message() -> str:
     userid = viewo_api.user_current()
     messages = flask.current_app.talker.answers_pop(userid)
     # convert to JSON
-    messages = [viewo_talk.action.message_raw(item) for item in messages]
-    result = flask.jsonify({
-        'messages': messages,
-    })
+    messages = [item.json() for item in messages]
+    data = dict(messages=messages) if messages else {}
+    result = flask.jsonify(data)
     return result

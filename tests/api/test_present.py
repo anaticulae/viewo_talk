@@ -14,12 +14,12 @@ import utilatest
 
 def test_receive_message(client):
     response = utilatest.apicall(client, '/talktome')
-    assert response == {'messages': []}
+    assert not response
 
 
 def test_receive_welcome(client):
     response = utilatest.apicall(client, '/talktome')
-    assert response == {'messages': []}
+    assert not response
     # wait for processing message
     time.sleep(0.1)
     response = utilatest.apicall(client, '/talktome')

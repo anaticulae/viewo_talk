@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import http
+
 import utilatest
 
 import tests
@@ -25,3 +27,12 @@ def test_receive_welcome(client):
     response = utilatest.apicall(client, '/talktome')
     messages = response['messages']
     assert len(messages) == 1
+
+
+def test_receive_answer(client):
+    utilatest.apicall(client, '/talktome/answer/13371337/0')
+    utilatest.apicall(
+        client,
+        '/talktome/answer/13371337/ABC',
+        expected=http.HTTPStatus.NOT_FOUND,
+    )

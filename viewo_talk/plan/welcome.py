@@ -22,6 +22,7 @@ Bei Fragen schauen Sie <<hier>>.
 class Welcome(viewo_talk.action.ActionMixin):
 
     def __init__(self):
+        super().__init__()
         self.done = utila.Single()
 
     def run(self, item: viewo_talk.action.Action):

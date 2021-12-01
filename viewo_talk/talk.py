@@ -45,6 +45,8 @@ class Talker:
         if job is None:
             return
         for task in self.tasks:
+            if task.routes and job.view in task.routes:
+                continue
             task.run(job)
 
     def run(self):

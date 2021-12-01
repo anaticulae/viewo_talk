@@ -23,3 +23,29 @@ def receive_message() -> str:
     data = dict(messages=messages) if messages else {}
     result = flask.jsonify(data)
     return result
+
+
+@viewo_talk.api.api_talk.route(
+    '/talktome/answer/<string:question>/<string(length=1):answer>')
+def receive_answer(question, answer) -> str:
+    try:
+        question = int(question)
+    except ValueError:
+        return viewo_api.bad(f'invalid index: {question}')
+    answer = bool(answer)
+    todo = create_answer(question, answer)
+    flask.current_app.talker.append(todo)
+    return 'done', 200
+
+
+def create_answer(question: int, answer: bool):
+    request = viewo_api.request()
+    result = viewo_talk.action.Answer(
+        user=request.hashed,
+        time=request.time,
+        path=(request.method, request.path),
+        data=request.data,
+        answer=answer,
+        question=question,
+    )
+    return result

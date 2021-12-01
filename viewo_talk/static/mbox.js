@@ -7,7 +7,7 @@ const listen = function () {
             if (message.name == 'MESSAGE') {
                 mbox_show_info(message.title, message.content)
             } else if (message.name == 'QUESTION') {
-                mbox_show_question(message.title, message.content)
+                mbox_show_question(message.title, message.content, message.index)
             }
         }
         setTimeout(() => listen(), WAITFOR * 1000);
@@ -26,7 +26,7 @@ const mbox_show_info = function (headline, content) {
     $('#mbox').removeClass('hidden')
 }
 
-const mbox_show_question = function (headline, question) {
+const mbox_show_question = function (headline, question, index) {
     $('#mbox_content').addClass('hidden')
     $('#mbox_question').removeClass('hidden')
     $('#mbox_headline').text(headline)
@@ -34,9 +34,43 @@ const mbox_show_question = function (headline, question) {
     $('#mbox').removeClass('hidden')
 }
 
-$(document).ready(function () {
+const mobx_hide_question = function () {
+    $('#mbox').addClass('hidden')
+}
+
+const register = function () {
     $(`#mbox_close`).click(function () {
         mbox_hide()
     });
+    $("#mbox_question_yes").submit(function (event) {
+        event.preventDefault();
+        let number = 10
+        rpc_post('/talktome',
+            {
+                'index': number,
+                'action': 'yes',
+            },
+            function (response) {
+                mbox_hide()
+            },
+        )
+    });
+    $("#mbox_question_no").submit(function (event) {
+        event.preventDefault();
+        let number = 10
+        rpc_post('/talktome',
+            {
+                'index': number,
+                'action': 'no',
+            },
+            function (response) {
+                mbox_hide()
+            },
+        )
+    });
+}
+
+$(document).ready(function () {
+    register()
     listen()
 })

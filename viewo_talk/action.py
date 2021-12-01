@@ -26,6 +26,7 @@ class Message:
     msgid: int = None
     title: str = None
     content: str = None
+    index: str = None
 
     def json(self) -> dict:
         result = dict(
@@ -39,9 +40,14 @@ class Message:
 @dataclasses.dataclass
 class Question(Message):
     """\
-    >>> Question(title='Magst du Brot?').json()
-    {'name': 'QUESTION', 'title': 'Magst du Brot?', 'content': None}
+    >>> Question(title='Magst du Brot?', index=10).json()
+    {'name': 'QUESTION', 'title': 'Magst du Brot?', 'content': None, 'index': 10}
     """
+
+    def json(self) -> dict:
+        result = super().json()
+        result['index'] = self.index
+        return result
 
 
 class ActionMixin:

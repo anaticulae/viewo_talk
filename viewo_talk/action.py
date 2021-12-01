@@ -17,7 +17,7 @@ class Action:
     user: int = None
     time: int = None
     msgid: int = None
-    view: str = None
+    path: str = None
     data: str = None
 
 
@@ -73,7 +73,7 @@ def fromrequest(request) -> Action:
     action = Action(
         user=request.hashed,
         time=request.time,
-        view=request.path,
+        path=(request.method, request.path),
         data=request.data,
         msgid=msgid(request.path),
     )

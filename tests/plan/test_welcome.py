@@ -19,7 +19,7 @@ def test_welcome():
     with worker() as talker:
         info = viewo_talk.action.Action(
             user=tests.USER,
-            view=tests.WELCOME,
+            path=tests.WELCOME,
         )
         talker.append(info)
     msg = talker.answers_pop(tests.USER)
@@ -31,7 +31,7 @@ def test_welcome_single():
         for _ in range(5):
             info = viewo_talk.action.Action(
                 user=tests.USER,
-                view=tests.WELCOME,
+                path=tests.WELCOME,
             )
             talker.append(info)
     msg = talker.answers_pop(tests.USER)

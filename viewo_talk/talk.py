@@ -50,7 +50,7 @@ class Talker:
             # empty job to signal to end processing
             return False
         for task in self.tasks:
-            if task.routes and job.view in task.routes:
+            if task.routes and job.path not in task.routes:
                 continue
             task.run(job)
         return True

@@ -45,7 +45,7 @@ class Talker:
         if job is None:
             return
         for task in self.tasks:
-            task.todo(job)
+            task.run(job)
 
     def run(self):
         while self.running:

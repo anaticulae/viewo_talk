@@ -54,7 +54,7 @@ class Question(Message):
 
 class ActionMixin:
 
-    def todo(self, item):
+    def run(self, item):
         pass
 
     def register(self, sendtouser):

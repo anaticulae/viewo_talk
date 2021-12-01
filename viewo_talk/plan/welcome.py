@@ -24,7 +24,7 @@ class Welcome(viewo_talk.action.ActionMixin):
     def __init__(self):
         self.done = utila.Single()
 
-    def todo(self, item: viewo_talk.action.Action):
+    def run(self, item: viewo_talk.action.Action):
         user = item.user
         if self.done.contains(user):
             return

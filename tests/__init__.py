@@ -9,3 +9,9 @@
 
 USER = '00000000'
 WELCOME = '/'
+
+
+def wait(instance):
+    talker = instance.application.talker
+    while talker.consume(wait=False):
+        pass

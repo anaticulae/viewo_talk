@@ -9,18 +9,14 @@
 
 import utilatest
 
+import tests
+
 
 def test_question(client_withdelete):
     # delete some content
     for _ in range(10):
         utilatest.apipost(client_withdelete, '/talktome', data={})
     # wait to process items
-    wait(client_withdelete)
+    tests.wait(client_withdelete)
     response = utilatest.apicall(client_withdelete, '/talktome')
     assert str(response).count("'name': 'QUESTION'") == 1
-
-
-def wait(instance):
-    talker = instance.application.talker
-    while talker.consume(wait=False):
-        pass

@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import time
-
 import utilatest
+
+import tests
 
 
 def test_receive_message(client):
@@ -21,7 +21,7 @@ def test_receive_welcome(client):
     response = utilatest.apicall(client, '/talktome')
     assert not response
     # wait for processing message
-    time.sleep(0.1)
+    tests.wait(client)
     response = utilatest.apicall(client, '/talktome')
     messages = response['messages']
     assert len(messages) == 1

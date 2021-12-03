@@ -73,5 +73,6 @@ const register = function () {
 
 $(document).ready(function () {
     register()
-    listen()
+    // start after 3 seconds
+    setTimeout(() => listen(), 3000);
 })

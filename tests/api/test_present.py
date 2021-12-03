@@ -20,8 +20,11 @@ def test_receive_message(client):
 
 
 def test_receive_welcome(client):
+    # ensure that no messages are in queue
     response = utilatest.apicall(client, '/talktome')
     assert not response
+    # open main page
+    utilatest.get(client, '/')
     # wait for processing message
     tests.wait(client)
     response = utilatest.apicall(client, '/talktome')

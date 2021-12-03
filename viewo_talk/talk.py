@@ -20,13 +20,16 @@ import viewo_talk.plan
 
 class Talker:
 
-    def __init__(self):
+    def __init__(self, skip: callable = None):
         self.tasks = []
         self.running = False
         self.todo = queue.Queue()
         self.msg = collections.defaultdict(list)
+        self.skip = skip if skip else skipper
 
     def append(self, item: viewo_talk.action.Action):
+        if self.skip(item.path):
+            return
         self.todo.put(item)
 
     def answers_pop(self, user: int = None) -> list:
@@ -97,6 +100,21 @@ class Talker:
 
     def register(self, task):
         self.tasks.append(task)
+
+
+SKIP = ('GET', f'{viewo_talk.config.API_PREFIX}/talktome')
+ICON = ('GET', '/favicon.ico')
+
+
+def skipper(item) -> bool:
+    if item == SKIP:
+        # do not invoke action as a result of message receiving
+        return True
+    if item == ICON:
+        return True
+    if item[1].startswith('/static/'):
+        return True
+    return False
 
 
 def route_matches(path, routes) -> bool:

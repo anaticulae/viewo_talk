@@ -21,9 +21,9 @@ from viewo_talk.view import welcome
 
 class Application(flask.Flask):
 
-    def __init__(self):
+    def __init__(self, sources: list = None):
         super().__init__(__name__)
-        register_talkme(self)
+        register_talkme(self, sources=sources)
         self.register()
         self.create_view()
 
@@ -56,6 +56,6 @@ def register_talkme(app, prefix: str = None, sources: list = None):
     app.register_blueprint(viewo_talk.api.api_talk, url_prefix=url_prefix)
 
 
-def create_app() -> flask.Flask:
-    appx = Application()
+def create_app(sources: list = None) -> flask.Flask:
+    appx = Application(sources=sources)
     return appx

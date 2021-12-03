@@ -151,8 +151,14 @@ def collect(packages) -> list:
 
 def create(sources=None) -> Talker:
     talker = Talker()
-    if not sources:
+    if sources is None:
         sources = [viewo_talk.plan]
+    talker = update(talker, sources)
+    return talker
+
+
+def update(talker, sources):
+    talker.tasks.clear()
     for ctor in collect(sources):
         constructred = ctor()
         constructred.register(talker)

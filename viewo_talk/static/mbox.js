@@ -19,7 +19,6 @@ const mbox_hide = function () {
 }
 
 const mbox_show_info = function (headline, content) {
-    $('#mbox_content').removeClass('hidden')
     $('#mbox_question').addClass('hidden')
     $('#mbox_headline').text(headline)
     $('#mbox_content').text(content)
@@ -28,46 +27,31 @@ const mbox_show_info = function (headline, content) {
 
 const mbox_show_question = function (headline, question, index) {
     QUESTION = index
-    $('#mbox_content').addClass('hidden')
     $('#mbox_question').removeClass('hidden')
     $('#mbox_headline').text(headline)
-    $('#mbox_question').text(question)
+    $('#mbox_content').text(question)
     $('#mbox').removeClass('hidden')
 }
 
 let QUESTION = null
 
-const mobx_hide_question = function () {
-    $('#mbox').addClass('hidden')
-}
-
 const register = function () {
     $(`#mbox_close`).click(function () {
         mbox_hide()
     });
-    $("#mbox_question_yes").submit(function (event) {
-        event.preventDefault();
-        rpc_post('/talktome',
-            {
-                question: QUESTION,
-                answer: 1,
-            },
-            function (response) {
-                mbox_hide()
-            },
-        )
+    $(`#mbox_question_yes`).click(function () {
+        rpc_post('/talktome', {
+            question: QUESTION,
+            answer: 1,
+        })
+        mbox_hide()
     });
-    $("#mbox_question_no").submit(function (event) {
-        event.preventDefault();
-        rpc_post('/talktome',
-            {
-                question: QUESTION,
-                answer: 0,
-            },
-            function (response) {
-                mbox_hide()
-            },
-        )
+    $(`#mbox_question_no`).click(function () {
+        rpc_post('/talktome', {
+            question: QUESTION,
+            answer: 0,
+        })
+        mbox_hide()
     });
 }
 

@@ -18,6 +18,7 @@ import viewo_talk.app
 
 LOCK = threading.Lock()
 COUNTER = 4200
+EMPTY = object()
 
 
 @contextlib.contextmanager
@@ -28,10 +29,12 @@ def newport():
         yield COUNTER
 
 
-@pytest.fixture(scope='session')
-def webview():
+@contextlib.contextmanager
+def webview(talker: bool = False, sources=EMPTY):
+    if sources == EMPTY:
+        sources = []
     with newport() as port:
-        appx = viewo_talk.app.create_app()
+        appx = viewo_talk.app.create_app(sources=sources)
         runner = threading.Thread(
             target=appx.run,
             daemon=True,
@@ -40,8 +43,11 @@ def webview():
         runner.start()
     try:
         # wait for startup?
-        time.sleep(0.01)  # do not show flask startup message
-        yield f'http://localhost:{port}/'
+        time.sleep(0.02)  # do not show flask startup message
+        if talker:
+            yield f'http://localhost:{port}/', appx.talker  # pylint:disable=E1101
+        else:
+            yield f'http://localhost:{port}/'
     except Exception as error:
         raise error from None
     appx.talker.stop()  # pylint:disable=E1101

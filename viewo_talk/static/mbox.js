@@ -3,15 +3,21 @@ const WAITFOR = 5.0
 const listen = function () {
     rpc(`/talktome`, function (response) {
         let messages = response.messages
-        for (let message of messages) {
-            if (message.name == 'MESSAGE') {
-                mbox_show_info(message.title, message.content)
-            } else if (message.name == 'QUESTION') {
-                mbox_show_question(message.title, message.content, message.index)
-            }
+        if (messages != undefined) {
+            evaluate_messages(messages)
         }
         setTimeout(() => listen(), WAITFOR * 1000);
     })
+}
+
+const evaluate_messages = function (messages) {
+    for (let message of messages) {
+        if (message.name == 'MESSAGE') {
+            mbox_show_info(message.title, message.content)
+        } else if (message.name == 'QUESTION') {
+            mbox_show_question(message.title, message.content, message.index)
+        }
+    }
 }
 
 const mbox_hide = function () {

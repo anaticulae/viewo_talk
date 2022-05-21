@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Fix
+
+* catch bad talk input (e1d07ef43d03)
+
+### Documentation
+
+* adjust modules path (9b5a01d9b9fe)
+* Happy New Year! (3e49016ea491)
+
 ## v0.2.0
 
 ### Feature

@@ -11,6 +11,6 @@ import os
 
 import configo
 
-SECRET_KEY = configo.env('CHANIA_SECRET_KEY', os.urandom(64))
+SECRET_KEY = configo.env('CHANIA_SECRET_KEY', default=os.urandom(64))
 
-API_PREFIX = configo.env('CHANIA_API_PREFIX', '/api/v0')
+API_PREFIX = configo.env('CHANIA_API_PREFIX', default='/api/v0')

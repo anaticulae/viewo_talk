@@ -53,8 +53,11 @@ def client_withdelete(client):  # pylint:disable=W0621
     urlmap = client.application.url_map
     # TODO: CONVERT TO EASIER TO USE METHOD
     # TODO: MAY CHANGE LATER
-    deleted = list(urlmap.iter_rules())[0]
-    assert str(deleted) == viewo_talk.action.pth('/talktome/delete')
+    rules = urlmap.iter_rules()
+    expected = viewo_talk.action.pth('/talktome/delete')
+    rules = [item for item in rules if expected in str(item)]
+    assert len(rules) == 1
+    deleted = rules[0]
     assert 'POST' in deleted.methods
     deleteall.routes.append(('POST', deleted.rule))
     yield client

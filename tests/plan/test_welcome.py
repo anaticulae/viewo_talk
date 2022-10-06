@@ -11,7 +11,7 @@ import contextlib
 
 import tests
 import viewo_talk.action
-import viewo_talk.plan
+import viewo_talk.plan.welcome
 import viewo_talk.talk
 
 

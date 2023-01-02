@@ -7,6 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilatest>=0.22.0<1.0.0
+utilatest>=0.26.0<1.0.0
 
 selenium>=3.141.0<5.0.0

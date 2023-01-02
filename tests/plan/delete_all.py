@@ -11,7 +11,6 @@ import collections
 
 import viewo_talk.action
 
-
 TITLE, CONTENT = viewo_talk.action.answer_split("""\
 Sämtliche ??? ignorieren
 

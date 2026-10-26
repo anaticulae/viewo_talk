@@ -38,7 +38,7 @@ def webview(talker: bool = False, sources=EMPTY):
         runner = threading.Thread(
             target=appx.run,
             daemon=True,
-            kwargs=dict(port=port),
+            kwargs={'port': port},
         )
         runner.start()
     try:

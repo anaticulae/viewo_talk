@@ -37,11 +37,11 @@ class Message:
     index: str = None
 
     def json(self) -> dict:
-        result = dict(
-            name=self.__class__.__name__.upper(),
-            title=self.title,
-            content=self.content,
-        )
+        result = {
+            'name': self.__class__.__name__.upper(),
+            'title': self.title,
+            'content': self.content,
+        }
         return result
 
 

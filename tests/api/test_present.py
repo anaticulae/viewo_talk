@@ -36,11 +36,17 @@ def test_receive_answer(client):
     utilotest.apipost(
         client,
         '/talktome',
-        data=dict(question=13371337, answer=0),
+        data={
+            'question': 13371337,
+            'answer': 0
+        },
     )
     utilotest.apipost(
         client,
         '/talktome',
-        data=dict(question='AAAAAAAAA', answer=0),
+        data={
+            'question': 'AAAAAAAAA',
+            'answer': 0
+        },
         expected=http.HTTPStatus.BAD_REQUEST,
     )

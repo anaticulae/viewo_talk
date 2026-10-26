@@ -23,7 +23,10 @@ def test_question(client_withdelete):
     response = utilotest.apipost(
         client_withdelete,
         '/talktome',
-        dict(question=13371337, answer=0),
+        {
+            'question': 13371337,
+            'answer': 0,
+        },
     )
     # wait to process items
     tests.wait(client_withdelete)

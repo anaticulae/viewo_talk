@@ -20,7 +20,7 @@ def receive_message() -> str:
     messages = flask.current_app.talker.answers_pop(userid)
     # convert to JSON
     messages = [item.json() for item in messages]
-    data = dict(messages=messages) if messages else {}
+    data = {"messages": messages} if messages else {}
     result = flask.jsonify(data)
     return result
 

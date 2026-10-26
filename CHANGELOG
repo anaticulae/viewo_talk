@@ -1,95 +1,378 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
 
-## v0.3.1 (2023-01-02)
+## v1.0.0 (2026-10-26)
 
-### Chore
+### Bug Fixes
 
-* use quick install (f43663a91ff4)
-* upgrade requirements.txt (3d1957756325)
-* upgrade pipeline (c8e99a4766f5)
+- **app**: Adjust after upgrading flask
+  ([`26d13d5`](https://github.com/anaticulae/viewo_talk/commit/26d13d53e7153376de315667d5479cff56bac142))
 
-## v0.3.0 (2022-10-06)
+### Chores
 
-### Chore
+- **dev**: Adjust dev env
+  ([`71030d3`](https://github.com/anaticulae/viewo_talk/commit/71030d34795d90bda405d00c10693868c41d0ef2))
 
-* add Jenkinsfile (3fc7b4340240)
-* upgrade requirements.txt (d97fb096918f)
+- **github**: Add .github
+  ([`013013c`](https://github.com/anaticulae/viewo_talk/commit/013013cb4fa50029a77f19043d68fa408612936e))
 
-## v0.2.1
+- **pyproject**: Add modern layout
+  ([`1bc1dba`](https://github.com/anaticulae/viewo_talk/commit/1bc1dba0d33512f7853d02863f943a2e739e1078))
 
-### Fix
+- **pyproject**: Remove outdated files
+  ([`0192e61`](https://github.com/anaticulae/viewo_talk/commit/0192e61562c81d4d37f16b92fdf02e09bb8de2a7))
 
-* catch bad talk input (e1d07ef43d03)
+- **readme**: Adjust file names
+  ([`e369cdc`](https://github.com/anaticulae/viewo_talk/commit/e369cdc39d268b5f0d506361690e836d41e33f0e))
+
+- **refactor**: Adjust naming
+  ([`71a8848`](https://github.com/anaticulae/viewo_talk/commit/71a8848554f1109840063c2ccb0181613acabfb8))
 
 ### Documentation
 
-* adjust modules path (9b5a01d9b9fe)
-* Happy New Year! (3e49016ea491)
+- **copyright**: Happy New Year!
+  ([`393bef3`](https://github.com/anaticulae/viewo_talk/commit/393bef30f198e45ede3f0851cdb417e2aa3fa334))
 
-## v0.2.0
+### Refactoring
 
-### Feature
+- **linter**: Solve linter warnings
+  ([`122f948`](https://github.com/anaticulae/viewo_talk/commit/122f9481892d007c9dd8d6960787499e00da3516))
 
-* improve question behavior (32f1831aac1e)
-* add method to update talker (194a09df620c)
-* add option to create app with different plans (0c0411443ffb)
-* do not log static access (2cf4d5a57ed2)
-* start listening after three seconds (09af965eba56)
-* add method to determine template path (39f707501680)
-* change to post behavior (a2a85aac7cf7)
-* add method to route answer (2b5c5c19501b)
-* use improved router (aa7c68a6cc4a)
-* change answer behavior (1ad31006710c)
-* add method to receive answer (8b784e592764)
-* add answer data type (ae43c9a1db9a)
-* add parameter to send a question to the user (8020c463a047)
-* use invocation method to determine action id (ed4941d6476a)
-* add routes to skip run for actions (400d7e863c24)
-* extend public API (088a95008068)
-* add option to register different Actions (9d5132fba4c6)
-* ensure that correct API is used (1f1a6bd009a7)
-* add method to receive, display and answer questions (a4a18d8c79a4)
-* add method to send rpc post requests (31d35cf6af43)
-* add index to distinguish process messages (5a1480c0aa97)
-* add option to show questions (e5b953b11e1a)
-* add question type (04eeadd2247f)
-* add JSON converter (ca76ea131b3a)
+### Testing
 
-### Fix
+- **imports**: Organize imports
+  ([`dbe414d`](https://github.com/anaticulae/viewo_talk/commit/dbe414de69265e9c57c45e2b50820d093e68a21e))
 
-* add option to consume till talker is empty (2db0c5326815)
-* use empty list to enable iteration (2be733550f7f)
 
-## v0.1.0
+## v0.3.1 (2023-01-02)
 
-### Feature
+### Chores
 
-* add folders to blue print (918189cb792d)
-* move to separate function to inject functionality (a19761ea9ce5)
-* extend public API (c742f2cd7837)
-* listen to the server (91e1de00b40a)
-* add basic js function file (03c2f4483a2a)
-* add base html view (26605423d24e)
-* add method to run dev server (a38cbf9795ca)
-* change talker to use JSON (6c4c4d54bcf7)
-* push every request to talker (6eba55dd373e)
-* create action from request (c25a93ff5267)
-* stop talker on app tear down (51df33408c54)
-* use class based approach (f9097bc173ed)
-* add basic app (e25f9f6ecb27)
-* define API config (61916206919f)
-* add message presentation API (a4e1c35dc338)
-* use consume, start, stop architecture (5132313f1663)
-* add method to pop multiple user messages (1f4ba9c33111)
-* add action collector (34d3b587eccf)
-* add basic talker (beecf6efe3fb)
+- **Jenkins**: Upgrade pipeline
+  ([`c8e99a4`](https://github.com/anaticulae/viewo_talk/commit/c8e99a4766f505bcb2658c78497181deee8840a5))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`3d19577`](https://github.com/anaticulae/viewo_talk/commit/3d195775632584923781efad33aae5613bce7f5d))
 
-* use wait to avoid high processor load (97a4d70fb065)
-* create on main invocation (64a45b4beb99)
-* strip end of message (8f62401b754f)
+- **setup**: Use quick install
+  ([`f43663a`](https://github.com/anaticulae/viewo_talk/commit/f43663a91ff4aa3fa4372db6c8b9e506851e553a))
 
-## v0.0.0 Initial release
+### Code Style
+
+- **format**: Format code
+  ([`6e822eb`](https://github.com/anaticulae/viewo_talk/commit/6e822eb5f4df4b8b6a71808ffe6893d0e921382d))
+
+
+## v0.3.0 (2022-10-06)
+
+### Chores
+
+- **ci**: Add Jenkinsfile
+  ([`3fc7b43`](https://github.com/anaticulae/viewo_talk/commit/3fc7b434024019f3ab05077cf7c2dc16f79a99d9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d97fb09`](https://github.com/anaticulae/viewo_talk/commit/d97fb096918f19c4d22bd003a65fba133a8dd183))
+
+### Code Style
+
+- **changelog**: Adjust for automation tool
+  ([`0efa271`](https://github.com/anaticulae/viewo_talk/commit/0efa271b67570e7d93fd3b64447d54afe5336e60))
+
+- **imports**: Organize imports
+  ([`fe371d6`](https://github.com/anaticulae/viewo_talk/commit/fe371d6688eb6f03336ed2d6d876af9d2c8acc30))
+
+### Refactoring
+
+- **config**: Clarify code
+  ([`78c7e35`](https://github.com/anaticulae/viewo_talk/commit/78c7e35289ae1bbf68892b67ba75e71709d58590))
+
+### Testing
+
+- **adjust**: Adjust after software integration
+  ([`dda4f6a`](https://github.com/anaticulae/viewo_talk/commit/dda4f6a9d257e8bd325d9aaeb4497f9515502119))
+
+
+## v0.2.1 (2022-05-21)
+
+### Bug Fixes
+
+- **mbox**: Catch bad talk input
+  ([`e1d07ef`](https://github.com/anaticulae/viewo_talk/commit/e1d07ef43d03f0cfa451141d5ac0e7452aecc19d))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`323e659`](https://github.com/anaticulae/viewo_talk/commit/323e659d3f292dcdfd4cc8f42093896d61d08cd4))
+
+- **requirements**: Upgrade requirements.txt
+  ([`40c302b`](https://github.com/anaticulae/viewo_talk/commit/40c302b4eb24a0d68f4407bd80cdc52b505b66fa))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`3e49016`](https://github.com/anaticulae/viewo_talk/commit/3e49016ea49120ebeb0ffde161d55eb83d229a0e))
+
+- **fix**: Adjust modules path
+  ([`9b5a01d`](https://github.com/anaticulae/viewo_talk/commit/9b5a01d9b9fe8041e2b4cd52f9ea3ee9b540636d))
+
+
+## v0.2.0 (2021-12-04)
+
+### Bug Fixes
+
+- **action**: Use empty list to enable iteration
+  ([`2be7335`](https://github.com/anaticulae/viewo_talk/commit/2be733550f7fb4e646fb842ede52f922abb789d3))
+
+- **talk**: Add option to consume till talker is empty
+  ([`2db0c53`](https://github.com/anaticulae/viewo_talk/commit/2db0c5326815a1d23d0ac131d59d77b70da32ba1))
+
+### Chores
+
+- **requirements**: Add selenium
+  ([`c5893ee`](https://github.com/anaticulae/viewo_talk/commit/c5893ee13ada6c2358622d25b2d3e15756ab9c42))
+
+### Features
+
+- **action**: Add answer data type
+  ([`ae43c9a`](https://github.com/anaticulae/viewo_talk/commit/ae43c9a1db9ae40a217cf0efaf8593ae0041c478))
+
+- **action**: Add index to distinguish process messages
+  ([`5a1480c`](https://github.com/anaticulae/viewo_talk/commit/5a1480c0aa97f007eb86f3444b5b37cbd2f46e8b))
+
+- **action**: Add question type
+  ([`04eeadd`](https://github.com/anaticulae/viewo_talk/commit/04eeadd2247f47ebc43f5e528f93374f61ead86d))
+
+- **action**: Use invocation method to determine action id
+  ([`ed4941d`](https://github.com/anaticulae/viewo_talk/commit/ed4941d6476adf45c5ab7b88b94207071ad998f0))
+
+- **API**: Add method to determine template path
+  ([`39f7075`](https://github.com/anaticulae/viewo_talk/commit/39f707501680e4e9ab2a5f6d7f0e40064ce5c742))
+
+- **api**: Change to post behavior
+  ([`a2a85aa`](https://github.com/anaticulae/viewo_talk/commit/a2a85aac7cf7f2c4061dc4f67f0aedde4651f28e))
+
+- **API**: Extend public API
+  ([`088a950`](https://github.com/anaticulae/viewo_talk/commit/088a95008068cd572c3fdf154fab2750327a795d))
+
+- **app**: Add option to create app with different plans
+  ([`0c04114`](https://github.com/anaticulae/viewo_talk/commit/0c0411443ffb11931187dcfc4fcc8c031fd4ab38))
+
+- **basic**: Add method to send rpc post requests
+  ([`31d35cf`](https://github.com/anaticulae/viewo_talk/commit/31d35cf6af43dfb280a5b6845e641743e94b4893))
+
+- **listen**: Ensure that correct API is used
+  ([`1f1a6bd`](https://github.com/anaticulae/viewo_talk/commit/1f1a6bd009a71dbf17ef3ab262b3dcef20633de5))
+
+- **mbox**: Add method to receive, display and answer questions
+  ([`a4a18d8`](https://github.com/anaticulae/viewo_talk/commit/a4a18d8c79a488404f98ff3ab9615526867846bf))
+
+- **mbox**: Change answer behavior
+  ([`1ad3100`](https://github.com/anaticulae/viewo_talk/commit/1ad31006710c230ac1e5ae5d949ec03000b13901))
+
+- **mbox**: Improve question behavior
+  ([`32f1831`](https://github.com/anaticulae/viewo_talk/commit/32f1831aac1eaaddf850630199009e5c93829849))
+
+- **mbox**: Start listening after three seconds
+  ([`09af965`](https://github.com/anaticulae/viewo_talk/commit/09af965eba5669b13eaedddab121becc55f2aaff))
+
+- **present**: Add JSON converter
+  ([`ca76ea1`](https://github.com/anaticulae/viewo_talk/commit/ca76ea131b3a18c8d8e64bd20a977cc798deabc5))
+
+- **present**: Add method to receive answer
+  ([`8b784e5`](https://github.com/anaticulae/viewo_talk/commit/8b784e59276465b2c79ff6c13e18da6d053f4f98))
+
+- **question**: Add option to show questions
+  ([`e5b953b`](https://github.com/anaticulae/viewo_talk/commit/e5b953b11e1a386590ec0bad1bb6bcd801fd460d))
+
+- **talk**: Add method to route answer
+  ([`2b5c5c1`](https://github.com/anaticulae/viewo_talk/commit/2b5c5c19501b2793ad9f91b7bc0ccac46bcdf80a))
+
+- **talk**: Add method to update talker
+  ([`194a09d`](https://github.com/anaticulae/viewo_talk/commit/194a09df620cb417301fbd68eb4b196fe6b1da59))
+
+- **talk**: Add option to register different Actions
+  ([`9d5132f`](https://github.com/anaticulae/viewo_talk/commit/9d5132fba4c66da97c52fe106bdaa0a8fdf2efc3))
+
+- **talk**: Add parameter to send a question to the user
+  ([`8020c46`](https://github.com/anaticulae/viewo_talk/commit/8020c463a04741d0dded808f07e632a5f874c1e4))
+
+- **talk**: Add routes to skip run for actions
+  ([`400d7e8`](https://github.com/anaticulae/viewo_talk/commit/400d7e863c24f708374a8e90535d1a3f0046ceb3))
+
+- **talk**: Do not log static access
+  ([`2cf4d5a`](https://github.com/anaticulae/viewo_talk/commit/2cf4d5a57ed20c1c662277ca5043c1ac59ce1775))
+
+- **talk**: Use improved router
+  ([`aa7c68a`](https://github.com/anaticulae/viewo_talk/commit/aa7c68a6cc4a6651a30a1002b2384e99ec494f65))
+
+### Refactoring
+
+- **action**: Rename view to path
+  ([`d4447d6`](https://github.com/anaticulae/viewo_talk/commit/d4447d619f0ee4bf517f06ecdc86cc0221cdba64))
+
+- **plan**: Rename action method
+  ([`0a429c6`](https://github.com/anaticulae/viewo_talk/commit/0a429c6ecfb3a6288e5c388aa2402a559ad8a742))
+
+- **rename**: Rename msg send method
+  ([`3dfa0ba`](https://github.com/anaticulae/viewo_talk/commit/3dfa0ba311e7e2a2577822ba1f915bd69f5f079c))
+
+- **talk**: Improve registering behavior
+  ([`b63fbdf`](https://github.com/anaticulae/viewo_talk/commit/b63fbdfc21af99ada0b784768e153cb66a242876))
+
+- **talk**: Move send question to separate method
+  ([`fe2ca1a`](https://github.com/anaticulae/viewo_talk/commit/fe2ca1ac63c073d583a44867a374059e4fb85266))
+
+### Testing
+
+- **conf**: Add fixture to run client with question
+  ([`7793bd1`](https://github.com/anaticulae/viewo_talk/commit/7793bd11978480cfb982489a9bbf2f957adcd380))
+
+- **delete**: Add useful deletion answer
+  ([`c6ef629`](https://github.com/anaticulae/viewo_talk/commit/c6ef629480f5ab95087229373d9a49e429839141))
+
+- **figure**: Convert figure to context manager
+  ([`3c5d44b`](https://github.com/anaticulae/viewo_talk/commit/3c5d44bbce3790fe6ecda1f73f8e2bc247cee748))
+
+- **fixture**: Add fixture with question pattern
+  ([`6c5af43`](https://github.com/anaticulae/viewo_talk/commit/6c5af434cfafe9e1b175b76883d4cac63d3dabca))
+
+- **present**: Increase test coverage
+  ([`68a4443`](https://github.com/anaticulae/viewo_talk/commit/68a4443f105f57c5ad3bcfbf1f4b76502b41cdcb))
+
+- **present**: Verify answer behavior
+  ([`8cb4afe`](https://github.com/anaticulae/viewo_talk/commit/8cb4afe0f3738c3cdd70ffb8b5193462f38fce63))
+
+- **question**: Invoke question to verify that user is informed
+  ([`4420769`](https://github.com/anaticulae/viewo_talk/commit/4420769f5bcc2a7d9b46f96f83b6a7245e747467))
+
+- **refactor**: Use wait to reduce test response
+  ([`49944f8`](https://github.com/anaticulae/viewo_talk/commit/49944f8e61ec2d4c25b3148c428493c916dde9e4))
+
+- **view**: Ensure that messages open welcome view
+  ([`3cb8591`](https://github.com/anaticulae/viewo_talk/commit/3cb8591ff83ba2dc9e168356dae80afe04ae64a3))
+
+- **view**: Verify closing question
+  ([`e809727`](https://github.com/anaticulae/viewo_talk/commit/e80972703e866026e1c2dd9a9b34ea2d1359ffed))
+
+
+## v0.1.0 (2021-12-01)
+
+### Bug Fixes
+
+- **action**: Strip end of message
+  ([`8f62401`](https://github.com/anaticulae/viewo_talk/commit/8f62401b754ffd2446dc09500deb5aec59a64977))
+
+- **main**: Create on main invocation
+  ([`64a45b4`](https://github.com/anaticulae/viewo_talk/commit/64a45b4beb99e12a717eb51ff86ad1b62aa8c8d0))
+
+- **talk**: Use wait to avoid high processor load
+  ([`97a4d70`](https://github.com/anaticulae/viewo_talk/commit/97a4d70fb06522607a0b6ade05a359d55d3eed0c))
+
+### Chores
+
+- **requirements**: Add flask
+  ([`7cd80ef`](https://github.com/anaticulae/viewo_talk/commit/7cd80ef2b0de082192a016b86a1c9f66f952e8c8))
+
+- **requirements**: Add flask bootstrap
+  ([`6a24505`](https://github.com/anaticulae/viewo_talk/commit/6a245050a745836006c5a5557c0ab4f3306d4a70))
+
+- **requirements**: Add utila
+  ([`6d9596c`](https://github.com/anaticulae/viewo_talk/commit/6d9596c2784a6da7532695403fdab9bef7298ad6))
+
+- **requirements**: Add utilatest
+  ([`e248c7c`](https://github.com/anaticulae/viewo_talk/commit/e248c7c17361c2fb32c696c9e463eb0225ddee00))
+
+- **requirements**: Add viewo_api
+  ([`e9a026c`](https://github.com/anaticulae/viewo_talk/commit/e9a026c467fbeba83712c9c9af1f17129c33413c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`41c6692`](https://github.com/anaticulae/viewo_talk/commit/41c66927d2f4c45bf0d0ad399cc4d3ebc6344c40))
+
+### Features
+
+- **action**: Create action from request
+  ([`c25a93f`](https://github.com/anaticulae/viewo_talk/commit/c25a93ff526720d9e7a805d5ed56ce02b2a203f9))
+
+- **api**: Add folders to blue print
+  ([`918189c`](https://github.com/anaticulae/viewo_talk/commit/918189cb792d2251074e6134a6f2dceba056f023))
+
+- **api**: Add message presentation API
+  ([`a4e1c35`](https://github.com/anaticulae/viewo_talk/commit/a4e1c35dc3388c7663ea79929b60c5d378271e37))
+
+- **API**: Extend public API
+  ([`c742f2c`](https://github.com/anaticulae/viewo_talk/commit/c742f2cd7837878702e43feabe87c2baf8f18372))
+
+- **app**: Add basic app
+  ([`e25f9f6`](https://github.com/anaticulae/viewo_talk/commit/e25f9f6ecb2761c0275cbb758d90145886965d34))
+
+- **app**: Move to separate function to inject functionality
+  ([`a19761e`](https://github.com/anaticulae/viewo_talk/commit/a19761ea9ce51dfe295a0e03fb1d3d11d2eea90a))
+
+- **app**: Push every request to talker
+  ([`6eba55d`](https://github.com/anaticulae/viewo_talk/commit/6eba55dd373ed21598375fc3b89def8ac81bf9f5))
+
+- **app**: Stop talker on app tear down
+  ([`51df334`](https://github.com/anaticulae/viewo_talk/commit/51df33408c54eeebccbff5d36acfe5ae2d82bcdf))
+
+- **app**: Use class based approach
+  ([`f9097bc`](https://github.com/anaticulae/viewo_talk/commit/f9097bc173ed47167bdac3d5127c8ea09310dc4f))
+
+- **base**: Add basic js function file
+  ([`03c2f44`](https://github.com/anaticulae/viewo_talk/commit/03c2f4483a2a679cad2ac58eb94510d021c941bd))
+
+- **config**: Define API config
+  ([`6191620`](https://github.com/anaticulae/viewo_talk/commit/61916206919f539e305d3f54fc7475ecd435f397))
+
+- **main**: Add method to run dev server
+  ([`a38cbf9`](https://github.com/anaticulae/viewo_talk/commit/a38cbf9795caea92133a23f61687a37ac49d1223))
+
+- **mbox**: Listen to the server
+  ([`91e1de0`](https://github.com/anaticulae/viewo_talk/commit/91e1de00b40af1cba4d1ab6366f8c8ce74b9df0e))
+
+- **present**: Change talker to use JSON
+  ([`6c4c4d5`](https://github.com/anaticulae/viewo_talk/commit/6c4c4d54bcf7714b158923e34033c8a8d3a146f6))
+
+- **talk**: Add action collector
+  ([`34d3b58`](https://github.com/anaticulae/viewo_talk/commit/34d3b587eccfaa95f7a241797e6fd0b487b98b66))
+
+- **talk**: Add basic talker
+  ([`beecf6e`](https://github.com/anaticulae/viewo_talk/commit/beecf6efe3fb49b197938e76d3de6d1712d8769e))
+
+- **talk**: Add method to pop multiple user messages
+  ([`1f4ba9c`](https://github.com/anaticulae/viewo_talk/commit/1f4ba9c33111fcb14d4e1ede41d541b8031fadf0))
+
+- **talk**: Use consume, start, stop architecture
+  ([`5132313`](https://github.com/anaticulae/viewo_talk/commit/5132313f1663b80f7dc64b83768bba1af1992509))
+
+- **view**: Add base html view
+  ([`2660542`](https://github.com/anaticulae/viewo_talk/commit/26605423d24e7bd279137c5448cedf68fb4820f3))
+
+### Refactoring
+
+- **js**: Move to separate files
+  ([`1b9adbd`](https://github.com/anaticulae/viewo_talk/commit/1b9adbdf0ebf761b0533f037f6172a476060577b))
+
+- **rename**: Improve naming
+  ([`b6a1ddf`](https://github.com/anaticulae/viewo_talk/commit/b6a1ddf05b58c787a16fd96f98de43732889fad4))
+
+- **talk**: Improve method order
+  ([`fef599c`](https://github.com/anaticulae/viewo_talk/commit/fef599cead803fec193071045a2a4675394ad0f1))
+
+### Testing
+
+- **app**: Setup basic API test
+  ([`6d20c37`](https://github.com/anaticulae/viewo_talk/commit/6d20c37c1e215a8e344fd21711a0db264dffe7f2))
+
+- **plan**: Verify welcome tracker
+  ([`4333dc7`](https://github.com/anaticulae/viewo_talk/commit/4333dc7e2e0a46a944e9bbb430f6cfba45f63be6))
+
+- **refactor**: Improve test structure
+  ([`e5975fd`](https://github.com/anaticulae/viewo_talk/commit/e5975fdb3bc5d7c37135ddb9ab6c176425719398))
+
+- **welcome**: Receive welcome message
+  ([`db7e702`](https://github.com/anaticulae/viewo_talk/commit/db7e70220c6b577dbcbc5722ea13225a3e7b49ea))
+
+
+## v0.0.0 (2021-11-26)
+
+- Initial Release

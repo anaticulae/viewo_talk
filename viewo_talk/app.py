@@ -39,7 +39,8 @@ class Application(flask.Flask):
 def register_talkme(app, prefix: str = None, sources: list = None):
     talker = viewo_talk.talk.create(sources=sources)
     app.talker = talker
-    app.before_first_request(talker.start)
+
+    start_talker_before_first_request(app, talker)
 
     @app.teardown_appcontext
     def teardown(exception):  # pylint:disable=W0613
@@ -54,6 +55,21 @@ def register_talkme(app, prefix: str = None, sources: list = None):
     url_prefix = prefix if prefix else viewo_talk.config.API_PREFIX
     # data API
     app.register_blueprint(viewo_talk.api.api_talk, url_prefix=url_prefix)
+
+
+def start_talker_before_first_request(app, talker):
+    # This method is necessary after upgrading flask which removes
+    # before_first_request
+    # TODO: VERIFY LATER
+    # app.before_first_request(talker.start)
+    started = False
+    # TODO: INVESTGATE LATER
+    @app.before_request
+    def start_talker():
+        nonlocal started
+        if not started:
+            talker.start()
+            started = True
 
 
 def create_app(sources: list = None) -> flask.Flask:

@@ -12,6 +12,7 @@ import utilotest
 
 import tests.plan.delete_all
 import viewo_talk.action
+import viewo_talk.app
 import viewo_talk.config
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name

@@ -8,7 +8,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 PACKAGES = [
     'viewo_talk',
@@ -16,4 +16,4 @@ PACKAGES = [
     'viewo_talk.plan',
 ]
 if __name__ == "__main__":
-    utila.install(__file__)
+    utilo.install(__file__)

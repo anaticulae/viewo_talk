@@ -9,36 +9,36 @@
 
 import http
 
-import utilatest
+import utilotest
 
 import tests
 
 
 def test_receive_message(client):
-    response = utilatest.apicall(client, '/talktome')
+    response = utilotest.apicall(client, '/talktome')
     assert not response
 
 
 def test_receive_welcome(client):
     # ensure that no messages are in queue
-    response = utilatest.apicall(client, '/talktome')
+    response = utilotest.apicall(client, '/talktome')
     assert not response
     # open main page
-    utilatest.get(client, '/')
+    utilotest.get(client, '/')
     # wait for processing message
     tests.wait(client)
-    response = utilatest.apicall(client, '/talktome')
+    response = utilotest.apicall(client, '/talktome')
     messages = response['messages']
     assert len(messages) == 1
 
 
 def test_receive_answer(client):
-    utilatest.apipost(
+    utilotest.apipost(
         client,
         '/talktome',
         data=dict(question=13371337, answer=0),
     )
-    utilatest.apipost(
+    utilotest.apipost(
         client,
         '/talktome',
         data=dict(question='AAAAAAAAA', answer=0),

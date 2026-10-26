@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import viewo_talk.talk
 
 
-@utila.cacheme(maxsize=1)
+@utilo.cacheme(maxsize=1)
 def talker():
     return viewo_talk.talk.create()

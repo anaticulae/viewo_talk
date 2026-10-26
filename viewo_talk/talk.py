@@ -12,7 +12,7 @@ import os
 import queue
 import threading
 
-import utila
+import utilo
 
 import viewo_talk.action
 import viewo_talk.plan
@@ -83,7 +83,7 @@ class Talker:
     def send_msg(self, user: str, title: str, content: str = None):
         msg = viewo_talk.action.Message(
             user=user,
-            time=utila.now(),
+            time=utilo.now(),
             title=title,
             content=content,
         )
@@ -92,7 +92,7 @@ class Talker:
     def send_question(self, user: str, title: str, content: str = None):
         msg = viewo_talk.action.Question(
             user=user,
-            time=utila.now(),
+            time=utilo.now(),
             title=title,
             content=content,
         )
@@ -131,15 +131,15 @@ def route_matches(path, routes) -> bool:
 
 
 def collect(packages) -> list:
-    if not utila.iterable(packages):
+    if not utilo.iterable(packages):
         packages = [packages]
     result = []
     for package in packages:
         source = os.path.split(package.__file__)[0]
-        for module in utila.file_list(source, include='py', absolute=True):
+        for module in utilo.file_list(source, include='py', absolute=True):
             if module.endswith('__init__.py'):
                 continue
-            loaded = utila.load_module(module)
+            loaded = utilo.load_module(module)
             for value in vars(loaded).values():
                 if not hasattr(value, 'mro'):
                     continue

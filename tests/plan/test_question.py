@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import utilotest
 
 import tests
 
@@ -15,17 +15,17 @@ import tests
 def test_question(client_withdelete):
     # delete some content
     for _ in range(10):
-        utilatest.apipost(client_withdelete, '/talktome/delete', data={})
+        utilotest.apipost(client_withdelete, '/talktome/delete', data={})
     # wait to process items
     tests.wait(client_withdelete)
-    response = utilatest.apicall(client_withdelete, '/talktome')
+    response = utilotest.apicall(client_withdelete, '/talktome')
     assert str(response).count("'name': 'QUESTION'") == 1
-    response = utilatest.apipost(
+    response = utilotest.apipost(
         client_withdelete,
         '/talktome',
         dict(question=13371337, answer=0),
     )
     # wait to process items
     tests.wait(client_withdelete)
-    response = utilatest.apicall(client_withdelete, '/talktome')
+    response = utilotest.apicall(client_withdelete, '/talktome')
     assert str(response).count("'title': 'Alles Klar'") == 1

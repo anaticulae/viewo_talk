@@ -9,7 +9,7 @@
 
 import time
 
-import utilatest
+import utilotest
 
 import tests.plan.delete_all
 import tests.selenium.conftest
@@ -17,8 +17,8 @@ import tests.selenium.conftest
 # TODO: UNIT THESE TESTS
 
 
-@utilatest.nightly
-@utilatest.displayed
+@utilotest.nightly
+@utilotest.displayed
 def test_view_welcome(driver):
     with tests.selenium.conftest.webview(talker=True) as (webview, talker):
         driver.get(webview)
@@ -34,8 +34,8 @@ def test_view_welcome(driver):
         assert mbox.is_displayed()
 
 
-@utilatest.nightly
-@utilatest.displayed
+@utilotest.nightly
+@utilotest.displayed
 def test_view_question(driver):
     with tests.selenium.conftest.webview(talker=True) as (webview, talker):
         driver.get(webview)

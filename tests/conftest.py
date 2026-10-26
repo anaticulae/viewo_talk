@@ -8,7 +8,7 @@
 # =============================================================================
 
 import pytest
-import utilatest
+import utilotest
 
 import tests.plan.delete_all
 import viewo_talk.action
@@ -16,7 +16,7 @@ import viewo_talk.config
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-utilatest.setup(viewo_talk.config.API_PREFIX)
+utilotest.setup(viewo_talk.config.API_PREFIX)
 
 
 @pytest.fixture

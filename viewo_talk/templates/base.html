@@ -1,20 +1,23 @@
-{% extends "bootstrap/base.html" %}
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
 
-{% block title %}Willkommen - Marhaban{% endblock %}
+    <title>{% block title %}viewo talk{% endblock %}</title>
 
-{% block styles %}
-{{ super() }}
-{% endblock %}
+    {{ bootstrap.load_css() }}
+</head>
+<body>
 
-{% block content %}
-{% endblock %}
+    {% block content %}{% endblock %}
 
-{% block scripts %}
-{{ super() }}
-<script type="text/javascript" src="{{url_for('static', filename='basic.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='mbox.js')}}"></script>
-{% endblock %}
+    {{ bootstrap.load_js() }}
 
-{% block navbar %}
-{% include "mbox.html" %}
-{% endblock %}
+    <script type="text/javascript" src="{{url_for('static', filename='basic.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='mbox.js')}}"></script>
+
+    {% include "mbox.html" %}
+</body>
+</html>

@@ -33,7 +33,7 @@ class Application(flask.Flask):
     def create_view(self):
         self.config.setdefault('BOOTSTRAP_SERVE_LOCAL', True)
         # configure extensions
-        flask_bootstrap.Bootstrap(app=self)
+        flask_bootstrap.Bootstrap5(app=self)
 
 
 def register_talkme(app, prefix: str = None, sources: list = None):

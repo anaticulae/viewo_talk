@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-11-02)
+
+### Chores
+
+- **pyproject**: Use newer package
+  ([`5116804`](https://github.com/anaticulae/viewo_talk/commit/5116804ffdffcdba74379fc357fae05efe499c0c))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`a7217e7`](https://github.com/anaticulae/viewo_talk/commit/a7217e7a2d87cb159a17181b84b46d9480e5d8aa))
+
+### Refactoring
+
+- **base**: Replace outdated code
+  ([`ad9143c`](https://github.com/anaticulae/viewo_talk/commit/ad9143cd1b1e6e52367e9007e6a80d175c81e07a))
+
+
 ## v1.0.0 (2026-10-26)
 
 ### Bug Fixes

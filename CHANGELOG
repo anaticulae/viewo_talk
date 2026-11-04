@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.1.0 (2026-11-04)
+
+### Chores
+
+- **dev**: Make script runnable
+  ([`9270f75`](https://github.com/anaticulae/viewo_talk/commit/9270f75f621f715b06d8a172bb7cc8adb6f0da1d))
+
+### Features
+
+- **static**: Add jquery
+  ([`117db51`](https://github.com/anaticulae/viewo_talk/commit/117db51b85a4cae40624a013573dee88ea3d5760))
+
+
 ## v1.0.1 (2026-11-02)
 
 ### Chores
